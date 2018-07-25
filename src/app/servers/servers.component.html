@@ -10,6 +10,10 @@
     </div>
   </div>
   <div class="col-xs-12 col-sm-4">
+    <!-- <a [routerLink]="['servers']">reload - relative path - will print error in console</a> -->
+    <!-- <a [routerLink]="['/servers']">reload - absolute path works</a> -->
+  <button class="btn btn-primary" (click)="onReloadServers()">Reload</button>
+  
     <app-edit-server></app-edit-server>
     <hr>
     <app-server></app-server>
