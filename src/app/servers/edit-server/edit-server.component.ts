@@ -19,6 +19,7 @@ export class EditServerComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    console.log('on Edit server');
     console.log(this.route.queryParams);
     // console.log( this.route.fragment);
     this.server = this.serversService.getServer(1);
