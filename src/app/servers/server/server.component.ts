@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 import { ServersService } from '../servers.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-server',
@@ -23,6 +23,12 @@ export class ServerComponent implements OnInit {
     this.server = this.serversService.getServer(
       val !== undefined ? Number(val) : 1
     );
+    this.route.params.subscribe((params: Params) => {
+      const val2 = params['id'];
+    this.server = this.serversService.getServer(
+      val !== undefined ? Number(val2) : 1
+    );
+    });
     console.log('On Server component - The server param ');
     console.log(val);
     console.log(this.server);
