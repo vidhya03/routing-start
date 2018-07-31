@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 import { ServersService } from '../servers.service';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
   selector: 'app-server',
@@ -14,7 +14,8 @@ export class ServerComponent implements OnInit {
 
   constructor(
     private serversService: ServersService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -25,12 +26,17 @@ export class ServerComponent implements OnInit {
     );
     this.route.params.subscribe((params: Params) => {
       const val2 = params['id'];
-    this.server = this.serversService.getServer(
-      val !== undefined ? Number(val2) : 1
-    );
+      this.server = this.serversService.getServer(
+        val !== undefined ? Number(val2) : 1
+      );
     });
     console.log('On Server component - The server param ');
     console.log(val);
     console.log(this.server);
+  }
+  onEdit() {
+    this.router.navigate(['edit'], { relativeTo: this.route }); // relative path
+    // we can also use absolute path
+    // this.router.navigate(['/servers', this.server.id, 'edit']);
   }
 }

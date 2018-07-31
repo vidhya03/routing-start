@@ -21,8 +21,12 @@ export class EditServerComponent implements OnInit {
   ngOnInit() {
     console.log('on Edit server');
     console.log(this.route.queryParams);
+    console.log(this.route.params);
+    const id =
+      this.route.snapshot.params['id'] !== undefined ? this.route.snapshot.params['id'] : 1;
+    console.log('the id is ' + this.route.snapshot.params['id']);
     // console.log( this.route.fragment);
-    this.server = this.serversService.getServer(1);
+    this.server = this.serversService.getServer(Number(id));
     this.serverName = this.server.name;
     this.serverStatus = this.server.status;
   }
