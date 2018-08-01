@@ -35,7 +35,11 @@ export class ServerComponent implements OnInit {
     console.log(this.server);
   }
   onEdit() {
-    this.router.navigate(['edit'], { relativeTo: this.route }); // relative path
+    this.router.navigate(['edit'], {
+      relativeTo: this.route,
+      queryParamsHandling: 'preserve'
+    }); // preserve query parameter
+    // this.router.navigate(['edit'], { relativeTo: this.route }); // relative path
     // we can also use absolute path
     // this.router.navigate(['/servers', this.server.id, 'edit']);
   }
