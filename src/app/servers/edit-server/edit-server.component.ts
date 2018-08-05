@@ -13,6 +13,7 @@ export class EditServerComponent implements OnInit {
   serverName = '';
   serverStatus = '';
   allowEdit = false;
+  changesSaved = false;
 
   constructor(
     private serversService: ServersService,
