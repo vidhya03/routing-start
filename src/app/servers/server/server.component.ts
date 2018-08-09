@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 import { ServersService } from '../servers.service';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router, Data } from '@angular/router';
 
 @Component({
   selector: 'app-server',
@@ -19,19 +19,17 @@ export class ServerComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // this.server = this.serversService.getServer(1);
-    const val = this.route.snapshot.params['id'];
-    this.server = this.serversService.getServer(
-      val !== undefined ? Number(val) : 1
-    );
-    this.route.params.subscribe((params: Params) => {
-      const val2 = params['id'];
-      this.server = this.serversService.getServer(
-        val !== undefined ? Number(val2) : 1
-      );
+    this.route.data.subscribe((data: Data) => {
+      this.server = data['server'];
     });
-    console.log('On Server component - The server param ');
-    console.log(val);
+    // this.server = this.serversService.getServer(1);
+    // const val = +this.route.snapshot.params['id'];
+    // this.server = this.serversService.getServer(val );
+    // this.route.params.subscribe((params: Params) => {
+    //   this.server = this.serversService.getServer(+ params['id']);
+    // });
+    // console.log('On Server component - The server param ');
+    // console.log(val);
     console.log(this.server);
   }
   onEdit() {
