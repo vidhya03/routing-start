@@ -21,6 +21,7 @@ export class ServerComponent implements OnInit {
   ngOnInit() {
     this.route.data.subscribe((data: Data) => {
       this.server = data['server'];
+      console.log(this.server);
     });
     // this.server = this.serversService.getServer(1);
     // const val = +this.route.snapshot.params['id'];
@@ -30,7 +31,7 @@ export class ServerComponent implements OnInit {
     // });
     // console.log('On Server component - The server param ');
     // console.log(val);
-    console.log(this.server);
+
   }
   onEdit() {
     this.router.navigate(['edit'], {

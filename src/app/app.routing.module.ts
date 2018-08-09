@@ -25,7 +25,11 @@ const appRoutes: Routes = [
     canActivateChild: [AuthGuard],
     component: ServersComponent,
     children: [
-      { path: ':id', component: ServerComponent,     resolve: { server: ServerResolver }},
+      {
+        path: ':id',
+        component: ServerComponent,
+        resolve: { server: ServerResolver }
+      },
       {
         path: ':id/edit',
         component: EditServerComponent,
@@ -46,6 +50,7 @@ const appRoutes: Routes = [
   }
 ];
 @NgModule({
+  // imports: [RouterModule.forRoot(appRoutes, { useHash: true })],
   imports: [RouterModule.forRoot(appRoutes)],
   exports: [RouterModule]
 })
